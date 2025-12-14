@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romantic Birthday Wishes 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Sriracha&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-pink: #ff69b4;
+            --color-light-pink: #ffc0cb;
+            --color-white: #fff;
+            --font-title: 'Titan One', sans-serif;
+            --font-body: 'Sriracha', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: var(--font-title);
+            color: var(--color-white);
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: slideInDown 1s ease-out;
+        }
+
+        .wish-box {
+            background: var(--color-white);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .wish-box p {
+            font-size: 1.3rem;
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            color: var(--color-pink);
+            margin-top: 30px;
+        }
+
+        .rose {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes floatRose {
+            0% {
+                opacity: 0;
+                transform: translateY(0) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+
+        .rose i {
+            animation: floatRose 8s infinite;
+            color: var(--color-pink);
+            font-size: 2rem;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            color: var(--color-white);
+            font-size: 1.5rem;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .nav-btn {
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: var(--color-pink);
+            color: var(--color-white);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+            font-family: var(--font-body);
+            font-weight: bold;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="rose"></div>
+
+    <div class="container">
+        <h1>💕 Happy Birthday, Yusra! 💕</h1>
+        
+        <div class="wish-box">
+            <p>On your special day, I want you to know how incredibly special you are.</p>
+            <p>You light up everyone's life with your beautiful smile and warm heart.</p>
+            <p>May this year bring you endless joy, wonderful moments, and all the love you deserve.</p>
+            <p>You deserve the world and so much more! 🌟</p>
+            <div class="signature">With all my love ❤️</div>
+        </div>
+
+        <button class="nav-btn" onclick="goToNext()">Next Surprise →</button>
+    </div>
+
+    <script>
+        const starsContainer = document.querySelector('.stars');
+        for (let i = 0; i < 50; i++) {
+            const star = document.createElement('i');
+            star.className = 'fas fa-star star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        const roseContainer = document.querySelector('.rose');
+        const createRose = () => {
+            const rose = document.createElement('div');
+            rose.innerHTML = '<i class="fas fa-rose"></i>';
+            rose.style.left = Math.random() * 100 + '%';
+            rose.style.animationDelay = Math.random() * 5 + 's';
+            roseContainer.appendChild(rose);
+            
+            setTimeout(() => rose.remove(), 8000);
+        };
+
+        setInterval(createRose, 1000);
+
+        function goToNext() {
+            window.location.href = 'celebration.html';
+        }
+    </script>
+</body>
+</html>

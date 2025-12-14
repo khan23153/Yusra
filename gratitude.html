@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gratitude & Appreciation 🙏</title>
+    <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Sriracha&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-gold: #ffd700;
+            --color-warm: #ff9500;
+            --color-white: #fff;
+            --font-title: 'Titan One', sans-serif;
+            --font-body: 'Sriracha', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, #f5af19 0%, #f12711 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            max-width: 700px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: var(--font-title);
+            color: var(--color-white);
+            font-size: 3.5rem;
+            margin-bottom: 40px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        .appreciation-card {
+            background: var(--color-white);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .appreciation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .appreciation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .appreciation-card p {
+            font-size: 1.2rem;
+            color: #333;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--color-warm);
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .stars-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star-bg {
+            position: absolute;
+            color: rgba(255,215,0,0.5);
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .nav-btn {
+            margin-top: 40px;
+            padding: 15px 40px;
+            background: var(--color-white);
+            color: #333;
+            border: 3px solid #333;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+            font-weight: bold;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="stars-bg"></div>
+
+    <div class="container">
+        <h1>🙏 Thank You, Yusra! 🌟</h1>
+        
+        <div class="card-container">
+            <div class="appreciation-card">
+                <div class="icon">💫</div>
+                <p>Thank you for being the amazing person you are every single day.</p>
+            </div>
+            
+            <div class="appreciation-card">
+                <div class="icon">🌈</div>
+                <p>Your kindness and compassion make the world a better place.</p>
+            </div>
+            
+            <div class="appreciation-card">
+                <div class="icon">✨</div>
+                <p>Thank you for all the beautiful memories we've shared together.</p>
+            </div>
+            
+            <div class="appreciation-card">
+                <div class="icon">💝</div>
+                <p>You deserve all the happiness in the world and so much more!</p>
+            </div>
+        </div>
+
+        <button class="nav-btn" onclick="goToNext()">Final Surprise →</button>
+    </div>
+
+    <script>
+        const starsContainer = document.querySelector('.stars-bg');
+        for (let i = 0; i < 60; i++) {
+            const star = document.createElement('i');
+            star.className = 'fas fa-star star-bg';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.fontSize = (0.5 + Math.random() * 1.5) + 'rem';
+            starsContainer.appendChild(star);
+        }
+
+        function goToNext() {
+            window.location.href = 'final.html';
+        }
+    </script>
+</body>
+</html>

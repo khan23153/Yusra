@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Birthday Message 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Sriracha&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-white: #fff;
+            --color-pink: #ff1493;
+            --font-title: 'Titan One', sans-serif;
+            --font-body: 'Sriracha', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: radial-gradient(circle at 30% 50%, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .balloons {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .balloon {
+            position: absolute;
+            width: 40px;
+            height: 50px;
+            border-radius: 50% 50% 50% 0;
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            animation: float 6s ease-in infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-120vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            max-width: 600px;
+            padding: 40px;
+            animation: zoomIn 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .message-box {
+            background: var(--color-white);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            font-family: var(--font-title);
+            color: var(--color-pink);
+            font-size: 3rem;
+            margin-bottom: 30px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        p {
+            font-size: 1.3rem;
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .final-message {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            color: var(--color-pink);
+            margin-top: 30px;
+            animation: slideUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .music-controls {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 15px;
+        }
+
+        .music-btn {
+            padding: 10px 20px;
+            background: var(--color-pink);
+            color: var(--color-white);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="balloons"></div>
+
+    <div class="container">
+        <div class="message-box">
+            <h1>🎂 Happy Birthday! 🎂</h1>
+            
+            <p>Today is your special day, and you deserve all the love and happiness in the world!</p>
+            
+            <p>Thank you for being such an incredible person. You bring joy to everyone around you.</p>
+            
+            <p>Make a wish, blow out the candles, and know that you are truly special!</p>
+            
+            <div class="final-message">
+                With love and admiration ❤️ 🎉
+            </div>
+
+            <div class="music-controls">
+                <button class="music-btn" onclick="playMusic()">🎵 Play Music</button>
+                <button class="music-btn" onclick="pauseMusic()">⏸️ Pause</button>
+            </div>
+        </div>
+    </div>
+
+    <audio id="birthday-music" src="love.mp3" preload="auto"></audio>
+
+    <script>
+        const balloonsContainer = document.querySelector('.balloons');
+        const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#1dd1a1', '#ff9ff3', '#54a0ff', '#fd79a8'];
+        
+        for (let i = 0; i < 20; i++) {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.style.left = Math.random() * 100 + '%';
+            balloon.style.background = `linear-gradient(135deg, ${colors[Math.floor(Math.random() * colors.length)]}, ${colors[Math.floor(Math.random() * colors.length)]})`;
+            balloon.style.animationDelay = Math.random() * 5 + 's';
+            balloon.style.transform = `rotate(${Math.random() * 45}deg)`;
+            balloonsContainer.appendChild(balloon);
+        }
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.top = '-10px';
+            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animation = `confettiFall ${3 + Math.random() * 2}s ease-in infinite`;
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => confetti.remove(), 5000);
+        }
+
+        setInterval(createConfetti, 50);
+
+        const audio = document.getElementById('birthday-music');
+
+        function playMusic() {
+            audio.play();
+        }
+
+        function pauseMusic() {
+            audio.pause();
+        }
+    </script>
+</body>
+</html>
